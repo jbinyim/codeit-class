@@ -1,18 +1,42 @@
-import Hello from "./Hello";
+import Board from "./Board";
+import Button from "./Button";
+import { useState } from "react";
+
+const random = (n) => {
+  return Math.ceil(Math.random() * n);
+};
 
 function App() {
-  const name = "react";
+  const [myGameHistory, setMyGameHistory] = useState([1]);
+  const [yourGameHistory, setYourGameHistory] = useState([1]);
 
   const handleClick = () => {
-    alert("반갑습니다.");
+    const myNextNum = random(6);
+    const yourNextNum = random(6);
+
+    setMyGameHistory([...myGameHistory, myNextNum]);
+    setYourGameHistory([...yourGameHistory, yourNextNum]);
+  };
+
+  const handleReset = () => {
+    setMyGameHistory([1]);
+    setYourGameHistory([1]);
   };
 
   return (
     <div>
-      <Hello />
-      <button onClick={handleClick}>확인</button>
-      <div>hello {name}</div>
-      <img src="" />
+      <Board
+        color="blue"
+        num={myGameHistory[myGameHistory.length - 1]}
+        gameHistory={myGameHistory}
+      />
+      <Board
+        color="red"
+        num={yourGameHistory[yourGameHistory.length - 1]}
+        gameHistory={yourGameHistory}
+      />
+      <Button onClick={handleClick}>던지기</Button>
+      <Button onClick={handleReset}>처음부터</Button>
     </div>
   );
 }
