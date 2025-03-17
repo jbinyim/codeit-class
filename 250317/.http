@@ -1,0 +1,60 @@
+Get http://localhost:5555/health-check
+
+### 회원가입
+POST http://localhost:5555/users/sign-up
+Content-Type: application/json
+
+{
+  "email": "test3@test.com",
+  "name": "임정빈",
+  "password": "qwee1234"
+}
+
+### 로그인
+
+POST http://localhost:5555/users/log-in
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "password": "qwee1234"
+}
+
+### 주문하기
+POST http://localhost:5555/orders
+Content-Type: application/json
+Authorization: Basic $364cf7f2-dba4-4611-abb2-8f4b91fc9eb9@
+
+[
+  {"productId": 1, "quantity": 2},
+  {"productId": 2, "quantity": 1},
+  {"productId": 3, "quantity": 3}
+]
+
+### 결제하기
+POST http://localhost:5555/orders/payment
+Content-Type: application/json
+Authorization: Basic $364cf7f2-dba4-4611-abb2-8f4b91fc9eb9@
+
+{
+  "orderId": "ad6f45dd-5d35-44df-964d-c84b6b21b1ea",
+  "paidAmount": 3814000
+}
+
+### 주문 취소
+DELETE  http://localhost:5555/orders/ad6f45dd-5d35-44df-964d-c84b6b21b1ea/cancel
+Content-Type: application/json
+Authorization: Basic $364cf7f2-dba4-4611-abb2-8f4b91fc9eb9@
+
+### 상품 찜하기
+PUT http://localhost:5555/products/4/like
+Authorization: Basic $364cf7f2-dba4-4611-abb2-8f4b91fc9eb9@
+
+### 상품 찜하기 해제하기기
+DELETE  http://localhost:5555/products/5/like
+Authorization: Basic $364cf7f2-dba4-4611-abb2-8f4b91fc9eb9@
+
+### 
+
+GET http://localhost:5555/products
+Content-Type: application/json
