@@ -1,0 +1,16 @@
+.app {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.left {
+  background: bisque;
+}
+
+.right {
+  background-color: darkgray;
+}
+.header {
+  background: bisque;
+  border-bottom: 1px solid salmon;
+}
